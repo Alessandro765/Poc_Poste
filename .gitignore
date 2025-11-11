@@ -1,0 +1,30 @@
+# Ambiente Virtuale
+# Ignora la cartella dell'ambiente virtuale
+venv/
+.venv/
+
+# File di cache di Python
+# Ignora le cartelle della cache e i file di bytecode compilati
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# File specifici dell'editor o del sistema operativo
+.DS_Store
+.vscode/
+.idea/
+
+# File di dipendenze (se generati localmente)
+pip-wheel-metadata/
+
+# File di build e distribuzione
+/build/
+/dist/
+*.egg-info/
+
+# File di log
+*.log
+
+# File di configurazione locali
+.env
