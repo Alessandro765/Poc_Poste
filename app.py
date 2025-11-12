@@ -17,7 +17,7 @@ st.set_page_config(
 # --- 2. Titolo e Sottotitolo con Logo ---
 
 # Creiamo due colonne: una piccola per il logo e una grande per il testo
-col1, col2 = st.columns([0.03, 0.97])  # Il primo numero è la larghezza della prima colonna
+col1, col2 = st.columns([0.05, 0.97])  # Il primo numero è la larghezza della prima colonna
 
 # Nella prima colonna, mostriamo l'immagine del logo
 with col1:
@@ -25,18 +25,19 @@ with col1:
 
 # Nella seconda colonna, mostriamo il titolo e il sottotitolo
 with col2:
-    st.title("Chatbot per la Knowledge Base di Data Governance")
+    st.title("Chatbot per la Knowledge Base di Data Governance & Strategy")
     st.caption("Una Proof of Concept (POC) basata su un'architettura RAG (Retrieval-Augmented Generation)")
 
 # --- 3. Area di Testo Statica con la Spiegazione ---
 st.markdown("""
-**Benvenuto in questa Proof of Concept!**
+**Benvenuto nella POC del Chatbot per la Data Governance & Strategy.**
 
-Questo chatbot è un sistema RAG progettato per rispondere a domande basandosi su una Knowledge Base specifica, composta da due documenti:
-*   Un file **CSV** contenente dati tabulari sui server.
-*   Un file **Word** (.docx) che descrive la strategia di Data Governance e le domande a cui la KB può rispondere.
+Questo sistema sfrutta un’architettura **RAG** per fornire risposte accurate e contestualizzate a domande relative alla Knowledge Base di Data Governance.
+La Knowledge Base è composta da due fonti principali:
+*   Un file **CSV**, contenente dati tabulari relativi ai server.
+*   Un documento **Word**, che descrive la strategia di Data Governance e definisce le domande a cui il chatbot può rispondere.
 
-L'obiettivo è dimostrare come sia possibile interrogare in linguaggio naturale fonti di dati eterogenee per ottenere risposte rapide, precise e contestualizzate, riducendo i tempi di ricerca manuale.
+L’obiettivo di questa POC è dimostrare come sia possibile interrogare in linguaggio naturale fonti di dati eterogenee per ottenere risposte rapide, precise e contestualizzate, riducendo i tempi di ricerca manuale e migliorando l’accesso alla conoscenza aziendale.
 """)
 st.divider()  # Aggiunge una linea di separazione visiva
 

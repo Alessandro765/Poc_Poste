@@ -34,7 +34,7 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 # BARA: Caricamento e suddivisione documenti
 documenti = [
     {"path": "KB/Base_dati_KB-DataGovernance&Strategy_2025110.csv", "flag": "server_data", "type": "csv"},
-    {"path": "KB/Data_Governance&Strategy-Domande_KB_v2.docx", "flag": "governance_strategy", "type": "docx"}
+    {"path": "KB/Data_Governance&Strategy-Domande_KB_v4.docx", "flag": "governance_strategy", "type": "docx"}
 ]
 
 document_chunks = {}
@@ -84,7 +84,8 @@ class State(TypedDict):
 # --- 4. NODI DEL GRAFO ---
 memory = MemorySaver()
 graph_builder = StateGraph(State)
-llm = ChatOpenAI(temperature=0.1, openai_api_key=openai_api_key, model_name="gpt-4o-mini")
+llm = ChatOpenAI(temperature=0.1, openai_api_key=openai_api_key, model_name="gpt-5-nano-2025-08-07")
+#gpt-5-nano-2025-08-07 performate e economico; gpt-4o-mini il più economico
 
 def initialize_state(state: State):
     return {
@@ -186,7 +187,7 @@ def extract_months_from_query(query: str) -> int:
 def generate_response(state: State):
     user_message = state["current_question"].lower()
     retrieved_text = state.get("retrieved_text", "")
-    llm = ChatOpenAI(temperature=0, openai_api_key=openai_api_key, model_name="gpt-4o-mini")
+    llm = ChatOpenAI(temperature=0, openai_api_key=openai_api_key, model_name="gpt-5-nano-2025-08-07")
 
     # 1. Capire l'intento
     intent_prompt = [
