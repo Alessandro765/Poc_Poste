@@ -32,11 +32,6 @@ with col2:
 st.markdown("""
 **Benvenuto nella POC del Chatbot per la Data Governance & Strategy.**
 
-Questo sistema sfrutta un’architettura **RAG** per fornire risposte accurate e contestualizzate a domande relative alla Knowledge Base di Data Governance.
-La Knowledge Base è composta da due fonti principali:
-*   Un file **CSV**, contenente dati tabulari relativi ai server.
-*   Un documento **Word**, che descrive la strategia di Data Governance e definisce le domande a cui il chatbot può rispondere.
-
 L’obiettivo di questa POC è dimostrare come sia possibile interrogare in linguaggio naturale fonti di dati eterogenee per ottenere risposte rapide, precise e contestualizzate, riducendo i tempi di ricerca manuale e migliorando l’accesso alla conoscenza aziendale.
 """)
 st.divider()  # Aggiunge una linea di separazione visiva
