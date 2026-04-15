@@ -1,11 +1,15 @@
-# --- backend.py (Versione Definitiva, Corretta con Invoke) ---
+# --- backend.py ---
 
 import os
 import re
+import traceback
+import json
 import numpy as np
 import pandas as pd
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+from typing import TypedDict
 from dotenv import load_dotenv, find_dotenv
-from typing import Annotated, TypedDict
 from rank_bm25 import BM25Okapi
 
 # LangChain Imports
@@ -15,32 +19,34 @@ from langchain_community.vectorstores import FAISS
 from langchain_community.document_loaders import Docx2txtLoader
 from langchain_core.messages import SystemMessage
 from langchain_core.documents import Document
-from langchain_core.stores import InMemoryStore
 
 # LangGraph Imports
 from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
 
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
-import re
-import json
-
 # --- 1. CONFIGURAZIONE INIZIALE ---
 load_dotenv(find_dotenv())
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
+MODEL_NAME = "gpt-5-nano-2025-08-07"
+EMBEDDING_MODEL = "text-embedding-3-small"
+CSV_PATH = "KB/Base_dati_KB-DataGovernance&Strategy_20260415-DMU.csv"
+
+def today_str() -> str:
+    """Restituisce la data odierna fresca a ogni chiamata (evita date congelate al boot)."""
+    return datetime.now().strftime("%d/%m/%Y")
+
+
 # --- 2. CARICAMENTO E PREPARAZIONE DOCUMENTI ---
-# BARA: Caricamento e suddivisione documenti
 documenti = [
-    {"path": "KB/Base_dati_KB-DataGovernance&Strategy_2025110.csv", "flag": "server_data", "type": "csv"},
+    {"path": CSV_PATH, "flag": "server_data", "type": "csv"},
     {"path": "KB/Data_Governance&Strategy-Domande_KB_v4.docx", "flag": "governance_strategy", "type": "docx"}
 ]
 
 document_chunks = {}
 for doc in documenti:
     chunks = []
-    print(f"📄 Caricamento del documento: {doc['path']} con flag: {doc['flag']}")
+    print(f"Caricamento del documento: {doc['path']} con flag: {doc['flag']}")
     try:
         if doc["type"] == "docx":
             loader = Docx2txtLoader(doc["path"])
@@ -52,23 +58,33 @@ for doc in documenti:
             for _, row in df.iterrows():
                 chunks.append(
                     f"L'hostname '{row['HOSTNAME']}' si trova nello stato '{row['STATO']}'. "
-                    f"Il responsabile è '{row['RESPONSABILE']}', il sistema operativo è '{row['SISTEMA OPERATIVO']}' "
-                    f"e la sua data di End of Service (EOS) è il {row['DATA EOS']}."
+                    f"Il responsabile e' '{row['RESPONSABILE']}', il sistema operativo e' '{row['SISTEMA OPERATIVO']}' "
+                    f"e la sua data di End of Service (EOS) e' il {row['DATA EOS']}."
                 )
         if chunks:
             document_chunks[doc["flag"]] = chunks
-            print(f"✅ Documento '{doc['flag']}' caricato e suddiviso in {len(chunks)} chunks.")
+            print(f"Documento '{doc['flag']}' caricato e suddiviso in {len(chunks)} chunks.")
     except Exception as e:
-        print(f"❌ Errore durante il caricamento di {doc['path']}: {e}")
+        print(f"Errore durante il caricamento di {doc['path']}: {e}")
 
+embeddings = OpenAIEmbeddings(model=EMBEDDING_MODEL)
 retrievers_faiss = {}
 bm25_models = {}
 for flag, chunks in document_chunks.items():
     tokenized_chunks = [chunk.split() for chunk in chunks]
     bm25_models[flag] = BM25Okapi(tokenized_chunks)
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
     vectorstore = FAISS.from_texts(chunks, embedding=embeddings)
     retrievers_faiss[flag] = vectorstore.as_retriever()
+
+# CSV pre-caricato una volta sola per evitare letture ripetute a ogni richiesta
+try:
+    _server_df = pd.read_csv(CSV_PATH)
+    _server_df['DATA EOS'] = pd.to_datetime(_server_df['DATA EOS'], format='%d/%m/%Y %H:%M', errors='coerce')
+    print(f"CSV server caricato in memoria: {len(_server_df)} righe.")
+except FileNotFoundError:
+    _server_df = pd.DataFrame()
+    print(f"CSV server non trovato al boot: {CSV_PATH}")
+
 
 # --- 3. DEFINIZIONE DELLO STATO DEL GRAFO ---
 class State(TypedDict):
@@ -81,11 +97,12 @@ class State(TypedDict):
     checked_documents: list
     fallback: bool
 
+
 # --- 4. NODI DEL GRAFO ---
 memory = MemorySaver()
 graph_builder = StateGraph(State)
-llm = ChatOpenAI(temperature=0.1, openai_api_key=openai_api_key, model_name="gpt-5-nano-2025-08-07")
-#gpt-5-nano-2025-08-07 performate e economico; gpt-4o-mini il più economico
+llm = ChatOpenAI(temperature=0, openai_api_key=openai_api_key, model_name=MODEL_NAME)
+
 
 def initialize_state(state: State):
     return {
@@ -94,18 +111,23 @@ def initialize_state(state: State):
         "final_response": "", "checked_documents": [], "fallback": False
     }
 
+
 def relevance_check(state: State):
     user_message = state["current_question"]
     relevance_prompt = [
         SystemMessage(content=(
-            "Sei un classificatore. La domanda riguarda infrastruttura IT, server, hostname, o strategia di Data Governance? "
+            "Sei un classificatore. La domanda riguarda infrastruttura IT, server, hostname, "
+            "obsolescenza/EOS di macchine, sistemi operativi, responsabili IT, o strategia di Data Governance? "
+            "Se l'utente chiede che giorno e' oggi, la richiesta e' legittima: rispondi con 'pertinente'.\n"
             "Rispondi solo con 'pertinente' o 'non_pertinente'.\n"
+            f"Data odierna: {today_str()}\n"
             f"Domanda: '{user_message}'"
         ))
     ]
     relevance_decision = llm.invoke(relevance_prompt).content.strip().lower()
-    print(f"🔎 Verifica di pertinenza: {relevance_decision}")
-    return {"is_relevant": "pertinente" in relevance_decision}
+    print(f"Verifica di pertinenza: {relevance_decision}")
+    return {"is_relevant": relevance_decision == "pertinente"}
+
 
 def classify_question(state: State):
     user_message = state["current_question"]
@@ -113,26 +135,31 @@ def classify_question(state: State):
     available_docs = [doc for doc in document_chunks.keys() if doc not in checked_documents]
     if not available_docs:
         return {"fallback": True}
-    
-    # BARA: Prompt di classificazione. Istruzioni del classificatore sceglie il doc da utilizzare.
+
     classification_prompt = [
         SystemMessage(content=(
             "Sei un assistente esperto in Data Governance e infrastruttura IT.\n"
-            "Il tuo compito è classificare la domanda dell'utente per scegliere il documento corretto da cui estrarre la risposta.\n\n"
-            f"**Domanda:** '{user_message}'\n\n"
+            "Il tuo compito e' classificare la domanda dell'utente per scegliere il documento corretto.\n\n"
+            f"**Domanda:** '{user_message}'\n"
+            f"**Data odierna:** {today_str()}\n\n"
             "I documenti disponibili sono:\n"
-            "- 'governance_strategy': Usalo per domande generali sulla strategia, sugli obiettivi della KB, su come trovare informazioni (es. 'Dove risiede il dato delle VM?', 'Quali sono le macchine che andranno in obsolescenza nei prossimi 3 mesi?' 'Sono responsabile del sistema X e voglio portare nel mio sistema l’informazione di AP/PK. Come posso farlo?').\n"
-            "- 'server_data': Usalo per domande che richiedono dati specifici su un server o un hostname (es. 'qual è lo stato di ALT-CARVM?', 'elenca le macchine con responsabile CAOps').\n\n"
+            "- 'governance_strategy': Usalo per domande generali sulla strategia, sugli obiettivi della KB, su processi e procedure "
+            "(es. 'Dove risiede il dato delle VM?', 'Come posso portare informazioni nel mio sistema?', 'Qual e' la politica di Data Governance?').\n"
+            "- 'server_data': Usalo per QUALSIASI domanda che richiede dati o calcoli su macchine/server/hostname, "
+            "incluse obsolescenza, EOS, stato, responsabile, sistema operativo "
+            "(es. 'qual e' lo stato di ALT-CARVM?', 'elenca le macchine con responsabile CAOps', "
+            "'quante macchine sono gia in obsolescenza?', 'quali macchine scadono entro 1 anno?').\n\n"
             f"Seleziona solo il flag migliore tra i seguenti: {available_docs}. Non aggiungere commenti o testo."
         ))
     ]
     classification_raw = llm.invoke(classification_prompt).content.strip().lower()
     classification = re.sub(r"[\[\]\'\"]", "", classification_raw).strip()
-    print(f"📌 Documento selezionato: '{classification}'")
+    print(f"Documento selezionato: '{classification}'")
     if classification not in available_docs:
         classification = available_docs[0]
-        print(f"⚠️  Selezione non valida, fallback a: '{classification}'")
+        print(f"Selezione non valida, fallback a: '{classification}'")
     return {"selected_flag": classification}
+
 
 def retrieve_documents(state: State):
     user_message = state["current_question"]
@@ -146,173 +173,246 @@ def retrieve_documents(state: State):
     unique_docs = list({doc.page_content: doc for doc in bm25_docs + faiss_docs}.values())
     return {"retrieved_text": "\n\n".join([doc.page_content for doc in unique_docs[:8]])}
 
-# Funzione helper per estrarre il numero di mesi. La mettiamo fuori per pulizia.
-def extract_months_from_query(query: str) -> int:
+
+def extract_date_window(query: str) -> tuple:
     """
-    Estrae il numero di mesi da una stringa. Cerca prima le cifre, poi le parole.
-    Restituisce un valore di default (3) se non trova nulla.
+    Usa un LLM per interpretare liberamente la finestra temporale dalla query.
+    Restituisce (data_inizio, data_fine, etichetta_markdown).
+    Fallback a 3 mesi futuri in caso di errore di parsing.
     """
-    # Dizionario per convertire le parole in numeri
-    word_to_number = {
-        'un': 1, 'uno': 1, 'una': 1, 'un mese': 1,
-        'due': 2,
-        'tre': 3,
-        'quattro': 4,
-        'cinque': 5,
-        'sei': 6,
-        'sette': 7,
-        'otto': 8,
-        'nove': 9,
-        'dieci': 10,
-        'undici': 11,
-        'dodici': 12
-    }
+    today = today_str()
+    prompt_content = (
+        f"Data odierna: {today}\n\n"
+        "Analizza la domanda e ricava la finestra temporale per filtrare la data di End of Service (EOS) delle macchine IT.\n"
+        "Rispondi SOLO con un JSON nel formato esatto, senza markdown ne commenti:\n"
+        "{\"date_from\": \"DD/MM/YYYY\", \"date_to\": \"DD/MM/YYYY\", \"label\": \"descrizione breve in italiano\"}\n\n"
+        "Linee guida:\n"
+        "- 'gia scadute/obsolete/in obsolescenza': date_from='01/01/1900', date_to=oggi\n"
+        "- 'questo mese': dal 1 all'ultimo giorno del mese corrente\n"
+        "- 'mese scorso': dal 1 all'ultimo giorno del mese precedente\n"
+        "- 'quest anno' / 'questo anno': dal 01/01 al 31/12 dell'anno corrente\n"
+        "- 'prossimo anno' / 'il prossimo anno': dal 01/01 al 31/12 dell'anno prossimo\n"
+        "- 'entro X giorni/settimane/mesi/anni': da oggi a oggi + X unita\n"
+        "- 'nel YYYY' / 'entro il YYYY': dal 01/01/YYYY al 31/12/YYYY\n"
+        "- 'tra X e Y mesi': da oggi+X mesi a oggi+Y mesi\n"
+        "- Se non c'e finestra temporale esplicita: da oggi a 3 mesi da oggi (default)\n\n"
+        f"Domanda: '{query}'"
+    )
+    try:
+        response = llm.invoke([SystemMessage(content=prompt_content)]).content.strip()
+        clean = re.sub(r'```json\s*|\s*```', '', response).strip()
+        parsed = json.loads(clean)
 
-    # 1. Cerca prima un numero scritto in cifre (es. "3")
-    digit_match = re.search(r'\d+', query)
-    if digit_match:
-        return int(digit_match.group(0))
+        date_from_str = parsed.get("date_from", "")
+        date_to_str = parsed.get("date_to", "")
+        label = parsed.get("label", "finestra temporale rilevata")
 
-    # 2. Se non trova cifre, cerca un numero scritto in parole
-    # Costruiamo un pattern regex per cercare una qualsiasi delle parole nel nostro dizionario
-    word_pattern = r'\b(' + '|'.join(word_to_number.keys()) + r')\b'
-    word_match = re.search(word_pattern, query, re.IGNORECASE) # re.IGNORECASE non fa differenza tra maiuscole/minuscole
-    if word_match:
-        word = word_match.group(0).lower()
-        return word_to_number[word]
+        date_from = datetime.min if date_from_str == "01/01/1900" else datetime.strptime(date_from_str, "%d/%m/%Y")
+        date_to = datetime.strptime(date_to_str, "%d/%m/%Y")
+        print(f"Finestra temporale LLM: {date_from_str} -> {date_to_str} | {label}")
+        return (date_from, date_to, f"**{label}**")
 
-    # 3. Se non trova nulla, restituisce un valore di default
-    return 3
+    except Exception as e:
+        print(f"Errore nel parsing della finestra temporale: {e}. Uso default: 3 mesi.")
+        today_dt = datetime.now()
+        end = today_dt + relativedelta(months=3)
+        return (today_dt, end, f"**in scadenza entro 3 mesi** (da {today} a {end.strftime('%d/%m/%Y')})")
+
+
+def _extract_filters(user_message: str) -> dict:
+    """
+    Estrae i filtri dalla domanda tramite LLM.
+    Campi: responsabile, stato, hostname, sistema_operativo, group_by.
+    - group_by: colonna su cui raggruppare il risultato ('SISTEMA OPERATIVO', 'RESPONSABILE', null).
+      Usato quando la domanda chiede 'quali sistemi operativi' o 'quali responsabili' invece di 'quali macchine'.
+    """
+    filter_extraction_prompt = [
+        SystemMessage(content=(
+            "Sei un estrattore di parametri per query su un database di macchine IT. "
+            "Analizza la domanda e popola il JSON con i filtri espliciti.\n"
+            "Lo stato puo essere solo 'OPERATIVO' o 'CONFIGURATO'.\n"
+            "Per 'group_by': usa 'SISTEMA OPERATIVO' se la domanda chiede quali sistemi operativi (es. 'quale SO', 'quali OS'), "
+            "usa 'RESPONSABILE' se chiede quali responsabili, altrimenti null.\n"
+            "Se un valore non e menzionato nella domanda, lascialo come null. Rispondi SOLO con il JSON.\n\n"
+            f"Data odierna: {today_str()}\n"
+            f"Domanda: '{user_message}'\n\n"
+            "Esempio 1: 'le macchine operative di CAOps' -> "
+            "{\"responsabile\": \"CAOps\", \"stato\": \"OPERATIVO\", \"hostname\": null, \"sistema_operativo\": null, \"group_by\": null}\n"
+            "Esempio 2: 'trovami l hostname ALT-CARVM' -> "
+            "{\"responsabile\": null, \"stato\": null, \"hostname\": \"ALT-CARVM\", \"sistema_operativo\": null, \"group_by\": null}\n"
+            "Esempio 3: 'quale sistema operativo andra in obsolescenza il prossimo anno' -> "
+            "{\"responsabile\": null, \"stato\": null, \"hostname\": null, \"sistema_operativo\": null, \"group_by\": \"SISTEMA OPERATIVO\"}\n"
+            "Esempio 4: 'macchine con Windows Server 2012' -> "
+            "{\"responsabile\": null, \"stato\": null, \"hostname\": null, \"sistema_operativo\": \"Windows Server 2012\", \"group_by\": null}"
+        ))
+    ]
+    try:
+        response_json_str = llm.invoke(filter_extraction_prompt).content.strip()
+        clean_json_str = re.sub(r'```json\s*|\s*```', '', response_json_str)
+        filters = json.loads(clean_json_str)
+        print(f"Filtri estratti dalla domanda: {filters}")
+        return filters
+    except (json.JSONDecodeError, AttributeError):
+        print("Non e stato possibile estrarre filtri specifici.")
+        return {"responsabile": None, "stato": None, "hostname": None, "sistema_operativo": None, "group_by": None}
+
+
+def _detect_eos_query(user_message: str) -> bool:
+    """Determina se la domanda richiede un filtro sulla data EOS."""
+    eos_keywords = [
+        "obsolescenza", "obsolet", "scadenza", "scadut", "scadono", "scadr", "scade",
+        "eos", "end of service", "end-of-service", "fine servizio", "data fine",
+        "fine vita", "end of life", "eol", "fuori supporto", "fuori servizio",
+        "supporto terminat", "supporto scadut",
+        "questo mese", "mese scorso", "quest'anno", "questo anno",
+        "prossim", "entro", "tra", "nei prossimi", "quando scade", "quando scadr",
+    ]
+    if any(kw in user_message for kw in eos_keywords):
+        print("Keyword EOS rilevata -> is_eos_query=True")
+        return True
+
+    eos_llm_prompt = [
+        SystemMessage(content=(
+            "La seguente domanda richiede un filtro sulla data di End of Service (EOS/scadenza) delle macchine/asset/sistemi? "
+            "Rispondi SOLO con 'si' o 'no'.\n\n"
+            f"Domanda: '{user_message}'"
+        ))
+    ]
+    answer = llm.invoke(eos_llm_prompt).content.strip().lower()
+    print(f"LLM fallback EOS check: '{answer}' -> is_eos_query={answer == 'si'}")
+    return answer == "si"
+
 
 def generate_response(state: State):
     user_message = state["current_question"].lower()
     retrieved_text = state.get("retrieved_text", "")
-    llm = ChatOpenAI(temperature=0, openai_api_key=openai_api_key, model_name="gpt-5-nano-2025-08-07")
+    today = today_str()
 
-    # 1. Capire l'intento
+    # 1. Rilevamento intento: calcolo vs conoscenza
     intent_prompt = [
         SystemMessage(content=(
-            "Analizza la domanda dell'utente. Il suo scopo è ottenere un calcolo (come un conteggio, una somma, un filtro su dati) oppure ottenere una spiegazione o informazione testuale?\n"
-            "Rispondi SOLO con una di queste due parole: 'calcolo' o 'conoscenza'.\n\n"
-            "Quante macchine sono... -> calcolo; Quali macchine sono... -> calcolo;"
-            "Dove risiede il dato delle VM?” -> conoscenza; “Sono responsabile del sistema X e voglio portare nel mio sistema l’informazione di AP/PK. Come posso farlo?” -> conoscenza.\n\n"
-            f"Domanda: '{user_message}'"
+            "Analizza la domanda dell'utente e classifica il suo intento.\n"
+            "Rispondi SOLO con una di queste due parole: 'calcolo' oppure 'conoscenza'.\n\n"
+            "Rispondi 'calcolo' per: conteggi, liste di macchine, ricerca per hostname/responsabile/stato/EOS/obsolescenza.\n"
+            "Rispondi 'conoscenza' per: spiegazioni, procedure, politiche, domande concettuali su Data Governance.\n\n"
+            f"Data odierna: {today}\n"
+            f"Domanda: {user_message}"
         ))
     ]
     intent = llm.invoke(intent_prompt).content.strip().lower()
-    print(f"🧠 Intento rilevato: '{intent}'")
+    print(f"Intento rilevato: {intent}")
 
-    # 2. Esecuzione basata sull'intento
+    # 2. Ramo calcolo
     if "calcolo" in intent:
-        print("🛠️ Esecuzione ramo di calcolo con Pandas...")
-        try:
-            df = pd.read_csv("KB/Base_dati_KB-DataGovernance&Strategy_2025110.csv")
-            df['DATA EOS'] = pd.to_datetime(df['DATA EOS'], errors='coerce')
-
-            # # CASO SEMPLICE: L'utente vuole solo il conteggio totale
-            # if "totale" in user_message or "quante macchine sono in tutto" in user_message or "Quali macchine sono presenti" in user_message:
-            #     total_count = len(df)
-            #     final_response = f"Nella Knowledge Base sono configurate in totale **{total_count} macchine**."
-            #     return {"final_response": final_response}
-            
-            # # CASO AVANZATO (DEFAULT): L'utente vuole filtrare e/o contare
-            # else:
-
-            # 1. Estrai i filtri (hostname, stato, responsabile)
-            filter_extraction_prompt = [
-                SystemMessage(content=(
-                    "Sei un estrattore di parametri per query. Analizza la domanda e popola il JSON. "
-                    "lo stato può essere solo operativo o configurato."
-                    "Se un valore non è menzionato, lascialo come null. Rispondi SOLO con il JSON.\n\n"
-                    f"Domanda: '{user_message}'\n\n"
-                    "Esempio 1: 'le macchine operative di CAOps' -> {\"responsabile\": \"CAOps\", \"stato\": \"OPERATIVO\", \"hostname\": null}\n"
-                    "Esempio 2: 'trovami l'hostname 2CEACC10-F3E0-40A4-91AF-01DD45AB857F' -> {\"responsabile\": null, \"stato\": null, \"hostname\": \"2CEACC10-F3E0-40A4-91AF-01DD45AB857F\"}"
-                ))
-            ]
-            try:
-                response_json_str = llm.invoke(filter_extraction_prompt).content.strip()
-                clean_json_str = re.sub(r'```json\s*|\s*```', '', response_json_str)
-                filters = json.loads(clean_json_str)
-                print(f"🔍 Filtri estratti dalla domanda: {filters}")
-            except (json.JSONDecodeError, AttributeError):
-                filters = {"responsabile": None, "stato": None, "hostname": None}
-                print("⚠️ Non è stato possibile estrarre filtri specifici.")
-
-            # 2. Applica i filtri estratti
-            filtered_df = df.copy()
-            if filters.get("responsabile"):
-                filtered_df = filtered_df[filtered_df['RESPONSABILE'].str.contains(filters["responsabile"], case=False, na=False)]
-            if filters.get("stato"):
-                filtered_df = filtered_df[filtered_df['STATO'].str.contains(filters["stato"], case=False, na=False)]
-            if filters.get("hostname"):
-                filtered_df = filtered_df[filtered_df['HOSTNAME'].str.contains(filters["hostname"], case=False, na=False)]
-
-            # 3. Applica l'eventuale filtro di obsolescenza (se richiesto)
-            if "obsolescenza" in user_message or "scadenza" in user_message:
-                months_to_check = extract_months_from_query(user_message)
-                today = datetime.now()
-                future_date = today + relativedelta(months=months_to_check)
-                filtered_df = filtered_df[
-                    (filtered_df['DATA EOS'] >= today) & 
-                    (filtered_df['DATA EOS'] <= future_date)
-                ]
-
-                # 4. Genera la risposta finale
-                count = len(filtered_df)
-                if count > 0:
-                    response_list = [f"Ho trovato **{count} macchine** che corrispondono ai tuoi criteri:"]
-                    for _, row in filtered_df.head(15).iterrows():
-                        eos_date = pd.to_datetime(row['DATA EOS']).strftime('%d/%m/%Y') if pd.notna(row['DATA EOS']) else 'N/A'
-                        response_list.append(f"- **{row['HOSTNAME']}** (Stato: {row['STATO']}, Resp: {row['RESPONSABILE']}, Scadenza: {eos_date})")
-                    if count > 15:
-                        response_list.append(f"\n... e altre {count - 15} macchine.")
-                    final_response = "\n".join(response_list)
-                else:
-                    final_response = "Mi dispiace, non ho trovato nessuna macchina che corrisponda a tutti i criteri specificati."
-                return {"final_response": final_response}
-
-        except FileNotFoundError:
+        print("Esecuzione ramo di calcolo con Pandas...")
+        if _server_df.empty:
             return {"final_response": "Mi dispiace, non trovo il file dati per eseguire il calcolo."}
-        except Exception as e:
-            print(f"❌ Errore nel ramo di calcolo: {e}")
-            import traceback
-            traceback.print_exc()
-            return {"final_response": "Si è verificato un errore durante il calcolo."}
+        try:
+            df = _server_df.copy()
+            filters = _extract_filters(user_message)
 
-    else:
-        print("... Esecuzione ramo di conoscenza (RAG standard)...")
-        
-        generation_prompt = [
-            SystemMessage(content=(
-                f"""Sei un assistente esperto in Data Governance e infrastruttura IT.
-                **Domanda dell'utente:** {user_message}.
-                **Informazioni recuperate dai documenti:** {retrieved_text}.
-                Rispondi in modo **conciso** e **preciso** alla domanda dell'utente basandoti **esclusivamente sui documenti forniti**.
-                Se le informazioni contengono una lista (ad esempio, una lista di server), formattala in modo chiaro e leggibile.
-                Se non trovi una risposta adeguata nei documenti, rispondi semplicemente con 'change_document'.
-                Informazioni:\n{retrieved_text}\n\nDomanda: {state['current_question']}"""
-            ))
-        ]
-        response = llm.invoke(generation_prompt).content.strip()
-        print(f"💬 Risposta generata (RAG): {response[:500]}...")
-        return {"final_response": response}
+            if filters.get("responsabile"):
+                df = df[df['RESPONSABILE'].str.contains(filters["responsabile"], case=False, na=False)]
+            if filters.get("stato"):
+                df = df[df['STATO'].str.contains(filters["stato"], case=False, na=False)]
+            if filters.get("hostname"):
+                df = df[df['HOSTNAME'].str.contains(filters["hostname"], case=False, na=False)]
+            if filters.get("sistema_operativo"):
+                df = df[df['SISTEMA OPERATIVO'].str.contains(filters["sistema_operativo"], case=False, na=False)]
+
+            is_eos_query = _detect_eos_query(user_message)
+            time_label = ""
+
+            if is_eos_query:
+                date_from, date_to, time_label = extract_date_window(user_message)
+                df = df[(df['DATA EOS'] >= date_from) & (df['DATA EOS'] <= date_to)]
+                print(f"Filtro EOS applicato: {date_from} -> {date_to}")
+
+            count = len(df)
+            group_by = filters.get("group_by")
+
+            if count == 0:
+                msg = (
+                    f"Nessuna macchina trovata {time_label}."
+                    if is_eos_query
+                    else "Mi dispiace, non ho trovato nessuna macchina che corrisponda ai criteri specificati."
+                )
+                return {"final_response": msg}
+
+            # Risposta raggruppata (es. "quale sistema operativo andrà in obsolescenza")
+            if group_by and group_by in df.columns:
+                grouped = (
+                    df.groupby(group_by)
+                    .agg(
+                        macchine=('HOSTNAME', 'count'),
+                        prima_scadenza=('DATA EOS', 'min')
+                    )
+                    .sort_values('prima_scadenza')
+                )
+                label_intro = f"**{grouped.shape[0]} sistemi operativi** {time_label}:" if is_eos_query else f"**{grouped.shape[0]} valori distinti** per '{group_by}':"
+                rows = [label_intro]
+                for os_name, row in grouped.iterrows():
+                    prima = row['prima_scadenza'].strftime('%d/%m/%Y') if pd.notna(row['prima_scadenza']) else 'N/A'
+                    rows.append(f"- **{os_name}** — {int(row['macchine'])} macchine (prima scadenza: {prima})")
+                return {"final_response": "\n".join(rows)}
+
+            # Risposta lista macchine (comportamento standard)
+            header = (
+                f"Ho trovato **{count} macchine** {time_label}:"
+                if is_eos_query
+                else f"Ho trovato **{count} macchine** che corrispondono ai tuoi criteri:"
+            )
+            rows = [header]
+            for _, row in df.head(15).iterrows():
+                eos_date = row['DATA EOS'].strftime('%d/%m/%Y') if pd.notna(row['DATA EOS']) else 'N/A'
+                rows.append(
+                    f"- **{row['HOSTNAME']}** (Stato: {row['STATO']}, "
+                    f"Resp: {row['RESPONSABILE']}, SO: {row['SISTEMA OPERATIVO']}, EOS: {eos_date})"
+                )
+            if count > 15:
+                rows.append(f"\n... e altre **{count - 15}** macchine.")
+            return {"final_response": "\n".join(rows)}
+
+        except Exception as e:
+            print(f"Errore nel ramo di calcolo: {e}")
+            traceback.print_exc()
+            return {"final_response": "Si e verificato un errore durante il calcolo."}
+
+    # 3. Ramo conoscenza (RAG)
+    print("Esecuzione ramo di conoscenza (RAG standard)...")
+    generation_prompt = [
+        SystemMessage(content=(
+            f"Sei un assistente esperto in Data Governance e infrastruttura IT. "
+            f"Data odierna: {today}.\n\n"
+            f"**Domanda dell'utente:** {state['current_question']}\n\n"
+            f"**Informazioni recuperate dai documenti:**\n{retrieved_text}\n\n"
+            "Rispondi in modo **conciso** e **preciso** basandoti **esclusivamente** sui documenti forniti. "
+            "Se le informazioni contengono una lista, formattala in modo chiaro e leggibile. "
+            "Se non trovi una risposta adeguata nei documenti, rispondi semplicemente con 'change_document'."
+        ))
+    ]
+    response = llm.invoke(generation_prompt).content.strip()
+    print(f"Risposta generata (RAG): {response[:500]}...")
+    return {"final_response": response}
+
 
 def decide_after_response(state: State):
-    """Decide se la risposta è valida o se bisogna cambiare documento."""
     if "change_document" in state["final_response"].lower():
-        print("⚠️  Richiesta di cambio documento.")
+        print("Richiesta di cambio documento.")
         return {"change_document": True, "checked_documents": state["checked_documents"] + [state["selected_flag"]]}
-    
-    print("✅ Risposta pronta per l'output.")
+    print("Risposta pronta per l'output.")
     return {"change_document": False}
 
+
 def irrelevant_question_response(state: State):
-    print("📢 Risposta per domanda non pertinente.")
-    return {"final_response": "Non posso rispondere, domanda non pertinente alla KB. Posso fornire informazioni relative alle entità analizzate nel perimetro infrastrutturale di Poste Italiane."} #BARA
+    print("Risposta per domanda non pertinente.")
+    return {"final_response": "La richiesta non e pertinente ai documenti in KB."}
+
 
 def fallback_response(state: State):
-    print("🚫 Fallback: nessuna informazione trovata.")
+    print("Fallback: nessuna informazione trovata.")
     return {"final_response": "Mi dispiace, non ho trovato un'informazione pertinente nei documenti a mia disposizione."}
+
 
 # --- 5. COSTRUZIONE DEL GRAFO ---
 graph_builder.add_node("initialize", initialize_state)
@@ -327,65 +427,44 @@ graph_builder.add_node("fallback_response", fallback_response)
 graph_builder.add_edge(START, "initialize")
 graph_builder.add_edge("initialize", "relevance_check")
 
-# Questo blocco è corretto e garantisce che il grafo prenda la giusta via
-# dopo il controllo di pertinenza.
 graph_builder.add_conditional_edges(
     "relevance_check",
     lambda state: "classification" if state["is_relevant"] else "irrelevant_response",
-    {
-        "classification": "classification",
-        "irrelevant_response": "irrelevant_response"
-    }
+    {"classification": "classification", "irrelevant_response": "irrelevant_response"}
 )
 
 graph_builder.add_conditional_edges(
     "classification",
     lambda state: "fallback_response" if state.get("fallback") else "retrieval",
-    {
-        "fallback_response": "fallback_response",
-        "retrieval": "retrieval"
-    }
+    {"fallback_response": "fallback_response", "retrieval": "retrieval"}
 )
 
 graph_builder.add_edge("retrieval", "response")
 graph_builder.add_edge("response", "decide_after_response")
 
-
 graph_builder.add_conditional_edges(
     "decide_after_response",
     lambda state: "classification" if state["change_document"] else "__end__",
-    {
-        "classification": "classification",
-        "__end__": END
-    }
+    {"classification": "classification", "__end__": END}
 )
 
 graph_builder.add_edge("irrelevant_response", END)
 graph_builder.add_edge("fallback_response", END)
 
 graph = graph_builder.compile(checkpointer=memory)
-print("\n🟢 Grafo compilato. Chatbot attivo.\n")
+print("\nGrafo compilato. Chatbot attivo.\n")
+
 
 # --- 6. FUNZIONE DI ESECUZIONE ---
 def run_rag_chain(question: str, thread_id: str):
-    """
-    Esegue il grafo RAG utilizzando invoke() per ottenere direttamente il risultato finale.
-    Questo metodo è più robusto e diretto per questa applicazione.
-    """
     try:
-        # Usiamo invoke() che attende la fine del grafo e restituisce lo stato finale completo.
         final_state = graph.invoke(
             {"current_question": question},
             config={"recursion_limit": 50, "configurable": {"thread_id": thread_id}}
         )
-        
-        # Estraiamo la risposta finale dallo stato restituito.
         final_response = final_state.get("final_response") if final_state else None
-        
-        return final_response if final_response else "Mi dispiace, si è verificato un problema e non ho potuto elaborare una risposta."
-
+        return final_response if final_response else "Mi dispiace, si e verificato un problema e non ho potuto elaborare una risposta."
     except Exception as e:
-        print(f"\n🚨 ERRORE CRITICO DURANTE L'ESECUZIONE DEL GRAFO: {e}\n")
-        import traceback
+        print(f"\nERRORE CRITICO DURANTE L'ESECUZIONE DEL GRAFO: {e}\n")
         traceback.print_exc()
-        return "Si è verificato un errore interno. Si prega di riprovare."
+        return "Si e verificato un errore interno. Si prega di riprovare."

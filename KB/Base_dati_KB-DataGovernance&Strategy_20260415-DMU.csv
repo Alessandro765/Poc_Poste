@@ -1,0 +1,382 @@
+﻿HOSTNAME,STATO,RESPONSABILE,SISTEMA OPERATIVO,DATA EOS,FONTE
+cephadmin-pod1,CONFIGURATO,Virtualizzazione,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+vdirect,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+vdirect-va-4,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pure-vmware-appliance_3,OPERATIVO,Virtualizzazione,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+vdirect-va-4,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+vdirect-va-4,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-1-50-rls-59_2ae9a845-1a7b-4f83-871e-0778d796f22f,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-1-50-rls-59_4f401cf9-b757-4acd-b233-2cc21ebfc2ef,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-1-50-rls-59_8203c439-f780-4d73-8092-cba34f4f73d3,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-1-50-rls-59_8d21d85c-4ecd-4ee3-a7f2-0fd9aa52be2a,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_1aec4a84-d0ed-402e-9b77-a94cfd14efe4,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_513da750-85af-47ae-beb1-76675a52ac5c,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_5f56f648-8252-4869-af55-e1ec3bb708db,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_c55483a6-7771-4086-8f0c-5acd4e8221a4,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_c7db56e6-dfd9-47f7-9caf-cc9c854b996f,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_0d14350a-91e1-4016-9590-27aef1460f50,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_27fd3d4b-097d-49fe-99bb-5ec85626e94b,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_360401db-0422-4fe7-a957-e3f71afcc318,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_4fe52beb-e744-41e9-8c3e-fd74df86ff15,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_53f0f663-15fe-4da8-858f-d2857f7c8b29,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_809da34d-70f6-4788-9d2a-890e83c280e2,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_a274025a-4076-462e-8065-4163613127ab,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_abae62ce-8d0a-472a-9f60-37871c9beef8,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_ae773a14-6348-48bc-8882-464fdf943103,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_bb0ca0eb-d046-47df-bb7a-452f9b516e67,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_e9ad464c-a58b-43ee-9fb5-992eaadc8c4d,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+vdirect-va-4,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_4c32c19b-048f-47b8-8796-7067f708b064,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_e9683a9b-ce01-41c5-b7f9-f9d9a636a3c4,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_9316db86-8db0-497a-b43e-1787dda154ca,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+iperf-test1,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+iperf-test2,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+cebasp01v,OPERATIVO,BO_SERVIZI_UP,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+cebasp02v,OPERATIVO,BO_SERVIZI_UP,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+paxonws01l,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pvrniprxrmb01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pvrnirmb01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pebasp01v,OPERATIVO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pebasp02v,OPERATIVO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+nocsvil01,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_90c399de-58be-499f-a25b-ec2da949b346,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ocsinventory2,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_bf75f645-60d5-402d-8df6-7dc70d04cef2,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_32f67d57-62e2-45e4-89af-e15727784288,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_d508780b-4d63-461d-bd24-a0d5f81ac4f4,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_8e7aa1f4-2019-4b93-ab65-e81753c6601b,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_989a1959-68b5-4a1b-99c6-9ca0cf9e9778,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_262fdc22-9b3b-46a2-b89d-91fc67c758ad,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+manila-service-image,CONFIGURATO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-1-50-rls-59_234d0824-b037-4614-a05c-7d9dd7a30202,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-1-50-rls-59_987f7162-4e87-4a2f-b307-0ad448e7773e,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_d4ce19a6-af6b-47cc-924f-e0116dd26b6b,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmpv-ljmtp05,OPERATIVO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmpv-ljmtp06,OPERATIVO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+spapp01,OPERATIVO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmpv-ljmtp03,CONFIGURATO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmpv-ljmtp07,OPERATIVO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmpv-ljmtp10,CONFIGURATO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmpv-lspdas01,CONFIGURATO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+spapp02,OPERATIVO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmpv-ljmtp01,OPERATIVO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmpv-ljmtp02,OPERATIVO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_58d30f9e-1151-48c3-8f8c-c719e3a5c0d6,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-1-50-rls-59_369802df-69f4-4165-a234-d60c4f08efd3,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_921416f0-6f4f-4df5-a7bc-81e8b4975b78,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pomezia-unifi,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ubuntu_freshinstall,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ubuntu_parent_01,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+vrealize-network-insight-proxy-v3,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+vrealize-network-insight-v3,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+gns3 vm,CONFIGURATO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_9cbc01fb-f804-4177-af17-05b503e0767b,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_4aff81df-27be-439b-b7fc-6cf722a6929c,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_e4fcc2c1-7b14-4d44-908e-2908061cf790,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-1-50-rls-59_fec28734-c30c-4e00-b997-729d37ab1d2f,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pebasp01v,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pebasp02v,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_ba6fbc66-c21a-4f1c-81fa-f5c4be9c5984,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ppcmvrni03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ppcmvrni02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+portaleretefissa,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+nocsyslog01,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+openmeetings,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+consolesda-prod,OPERATIVO,BO_SERV_CORPOR_CRM,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+squid-v1,CONFIGURATO,BO_SERV_CORPOR_CRM,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+squid-v2,CONFIGURATO,BO_SERV_CORPOR_CRM,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+dns-p1,CONFIGURATO,BO_SERV_CORPOR_CRM,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmpv-liagas01,OPERATIVO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+spcmnsxe09v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+spcmnsxe10v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ctopcmnsxe09v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ctopcmnsxe10v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pure-vmware-appliance_4.1.2,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+spcmnsxtmvoip01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+spcmnsxtmvoip02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+spcmnsxtmvoip03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+spcmnsxevoip01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+spcmnsxevoip02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+spcmnsxevoip03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+spcmnsxevoip04v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+spcmnsxevoip05v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_34346978-6e41-4392-978c-93a90d569a26,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+eokmsvs01,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+emb2_sip-2,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+emb_mis_rm,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+emb_web_as_rm,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-1-50-rls-59_7c742fcd-e519-46a1-a626-bf70727516f2,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+emb2_sip,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pvoipeuas01c,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+emb2_stun_turn,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+emb2_sfu,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+iperf-test1,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmniosdns01c,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxtm01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxe04v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxe01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxe03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxe06v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxe05v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxe02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxtm03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxtm02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxebck02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxetlc03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxebck01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxetlc01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ptopcmnsxetlc02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+crm1pcmnsxtm01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+crmpcmnsxe03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+crmpcmnsxe02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+crmpcmnsxe01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+crmpcmnsxesccm01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+crm1pcmnsxtm02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+crm1pcmnsxtm03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+crmpcmnsxebck01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+crmpcmnsxesccm03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+crmpcmnsxebck02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+crmpcmnsxesccm02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmcv-llandocp03,CONFIGURATO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmcv-llandocp02,CONFIGURATO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+conmemberdns,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+conmemberdns02,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+voip-checker-to,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prm1pcmnsxtm01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prm1pcmnsxtm03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prm1pcmnsxtm02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmpcmnsxe01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmpcmnsxe02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmpcmnsxe03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmpcmnsxelb03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmpcmnsxesccm03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prm1pcmnsxebck01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmpcmnsxesccm02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmpcmnsxestlc03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmpcmnsxestlc01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmpcmnsxestlc02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmpcmnsxelb01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmbpcmnsxebck01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmpcmnsxesccm01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prm1pcmnsxebck02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmbpcmnsxebck02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prmpcmnsxelb02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+vmtest-xx_template,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_4fa801af-fea2-4fd8-a075-03df08c786a5,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-1-50-rls-59_68a84c50-ef2a-4420-99f2-7003f19c1a4b,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+spappc01,OPERATIVO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+nginx-dkrhost02,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+tsdvprt01v,OPERATIVO,BPI_Platform_Expert,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+tsnly01v,OPERATIVO,BPI_Platform_Expert,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+odns-p-as-v01,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+odns-p-as-v02,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+punlyc01v,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+punbgc01v,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-1-50-rls-59_8de12a35-9d4b-43b5-a67f-226e6aa4eeeb,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_1f46e47e-01b1-47e2-be8d-5d83aab54012,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_54e71229-79ad-4a8b-9b3f-aa4406369a92,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_12005756-ae52-4589-8b3f-abd8ee3042a8,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_f8d24319-40c2-4d02-bf7b-753b736989ec,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_8763ac09-25b4-4040-86cd-48fa1bbd2e18,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_6e7ccdb1-10fb-4038-987c-a5b894beeb2e,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+nexp-p-eng-v03,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+nexp-p-eng-v02,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+vdc-c-mp-as-v01,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+odns-p-as-v04,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+nexp-p-eng-v01,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+odns-p-as-v03,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmas-ub0012,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+sic-p-thales-v02,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+sic-p-thales-v01,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_23e617dd-4542-4766-bfae-f4c6d2777fa0,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_1eaca7a1-80d5-4303-9ac9-6f0b22d3691b,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_852a8935-4255-410d-aa66-4cf02e3a774b,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_e567b5e1-7ced-4656-b27a-e61fafc39254,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+alteonos-32-4-6-0-rls-159_18a410fe-2689-4c71-96d0-6c33d826e8ad,OPERATIVO,Network Security,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ppvdspapl01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmpv-llandocp01,OPERATIVO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+rmpv-llandocp02,OPERATIVO,PV_TechnicalSupport,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+tanly01v_02_12_2025,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+cp-template-9111220b-aa3c-438e-aae0-b2832f78c336,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+cp-replica-17ea845e-93d4-4771-b41f-f81ad33429b9,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+tptester,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+tadvprt02v,OPERATIVO,BPI_Platform_Expert,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ced3cslg01,OPERATIVO,AM_SPL_LIN_UNI_MIDLW,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+ced3linux01,OPERATIVO,AM_SPL_LIN_UNI_MIDLW,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prm1pcmnsxtm03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prm1pcmnsxtm01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+prm1pcmnsxtm02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+drtopcmnsxelb02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+drtopcmnsxe02v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+drtopcmnsxelb01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+drtopcmnsxe01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+drtopcmnsxe03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+drtopcmnsxelb03v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+tadvprt01v,OPERATIVO,BPI_Platform_Expert,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+tamng01v,OPERATIVO,BPI_Platform_Expert,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+tanly01v,OPERATIVO,BPI_Platform_Expert,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+cp-template-d0d92262-0b02-4276-94dc-4594abd82751,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+cp-template-ffad0f1e-fca7-457a-83c8-821a972116bc,CONFIGURATO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pnetconas01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pnetconas01v,OPERATIVO,UNKNOWN,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pure3-analytics,OPERATIVO,Virtualizzazione,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pure5-analytics,OPERATIVO,Virtualizzazione,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pure7-analytics,OPERATIVO,Virtualizzazione,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pure2-analytics,OPERATIVO,Virtualizzazione,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+pure1-analytics,OPERATIVO,Virtualizzazione,Linux Ubuntu (64-bit),01/04/2028 00:00,DMU
+EUR-MS-EDGE-1,OPERATIVO,TLC,Linux Ubuntu 16.04.6 LTS,01/04/2026 00:00,DMU
+EUR-MS-EDGE-TIM-1,OPERATIVO,TLC,Linux Ubuntu 16.04.6 LTS,01/04/2026 00:00,DMU
+EUR-MS-EDGE-FW-1,OPERATIVO,TLC,Linux Ubuntu 16.04.6 LTS,01/04/2026 00:00,DMU
+TO-MS-EDGE-1,OPERATIVO,TLC,Linux Ubuntu 16.04.6 LTS,01/04/2026 00:00,DMU
+TO-MS-EDGE-TIM-1,OPERATIVO,TLC,Linux Ubuntu 16.04.6 LTS,01/04/2026 00:00,DMU
+TO-MS-EDGE-FW-1,OPERATIVO,TLC,Linux Ubuntu 16.04.6 LTS,01/04/2026 00:00,DMU
+prmbfefin01esx01,OPERATIVO,Virtualizzazione,ESXi 7.0.2,01/04/2025 00:00,DMU
+prmbfefin01esx02,OPERATIVO,Virtualizzazione,ESXi 7.0.2,01/04/2025 00:00,DMU
+prmbfefin01esx03,OPERATIVO,Virtualizzazione,ESXi 7.0.2,01/04/2025 00:00,DMU
+prm1voippcm01esx03,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PCSQLRMBPIL05,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PCSQLRMBPIL06,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PESXMPCCUTO01ESX01,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PESXMPCCUTO01ESX02,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PESXMPCCUTO01ESX03,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PRM1COMPVDI03ESX01,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PRM1COMPVDI03ESX02,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PRM1COMPVDI03ESX03,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PRM1EXCHESX03,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PRM1MGCP01ESX09,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PT40823199,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PT40823200,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOALSI03,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOALSIESX01,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOALSIESX02,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOALSIESX03,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOALSIESX04,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOALSIESX05,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOALSIESX06,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOALSIESX07,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOALSIESX08,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOALSIESX10,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOFESIESX01,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOFESIESX02,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOFESIESX03,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PTOFESIESX04,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PRM1COMPVDI03ESX04,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+PRM1EXCHESX02,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+ESX1.GEN3GPPITO.CLOUDCOLL.POSTE.IT,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+ESX1.GEN3GPPITO.CLOUDSVIL.POSTE.IT,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+ESX2.GEN3GPPITO.CLOUDCOLL.POSTE.IT,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+ESX2.GEN3GPPITO.CLOUDSVIL.POSTE.IT,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+drtoedgepcm01esx03,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+drtoedgepcm01esx02,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+drtoedgepcm01esx01,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+sesxalto18,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+drtopilinfr01esx01,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+CTO3OPPL01ESX10,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+CTO3OPPL01ESX13,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+CTO3OPPL01ESX12,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+cto3oppl01esx11,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+pesxpilto14,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+pesxpilto13,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+pesxpilto12,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+pesxpilto11,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+pesxpilto10,OPERATIVO,UNKNOWN,ESXi 7.0.2,01/04/2025 00:00,DMU
+rmsv-loraodi01,OPERATIVO,PV_TechnicalSupport,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rmpv-lodiedq01,OPERATIVO,PV_TechnicalSupport,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rmpv-lodiedq02,OPERATIVO,PV_TechnicalSupport,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rmcv-loraodi02,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rmcv-loraodi01,OPERATIVO,PV_TechnicalSupport,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+oracle12c-smalltemplate,CONFIGURATO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+orasmrac,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+c69n2paca,CONFIGURATO,AM_SCE_SAPCORPORATE,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+nnm6hpov,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+nnm7hpov,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+nnm8hpov,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rmpv-lpassbck01,CONFIGURATO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rmpv-lsisxvbck01,CONFIGURATO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+pocds-pdi6-db01,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+pocds-pdi4-db01,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+template-oel7.4-x64-db-12cr2,CONFIGURATO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+popdi-p-sb-db01,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+scp-p-po-db-v01,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+template-oel6.7-x64-db12c,CONFIGURATO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-59,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+ecb-p-ql-as-v04,CONFIGURATO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+ecb-c-fe-as-v01,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-n08,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-58,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-n10,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-54,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+ecb-p-ql-as-v02,CONFIGURATO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+ecb-p-ql-as-v03,CONFIGURATO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-n07,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-n06,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-n05,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-55,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+ecb-p-ql-as-v01,CONFIGURATO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-n04,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-n09,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+ecb-p-fe-as-v01,CONFIGURATO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-56,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+ecb-p-fe-as-v02,CONFIGURATO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-68,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+ecb-p-do-cs-v04,CONFIGURATO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-63,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-as-67,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+tpi-p-od-as-v01,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+wt-p-as-v05,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+f23-p-do-as-v02,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+gec-p-do-as-xpe-v01,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+wt-p-as-v02,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+f23-c-do-as-v02,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+rm-ged-cs-69,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+wt-p-as-be-v01,OPERATIVO,UNKNOWN,Linux Oracle 4/5/6/7 (64-bit),01/12/2024 00:00,DMU
+pdr-aaop-wtnsql,OPERATIVO,Virtualizzazione,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+vm-almserver2,OPERATIVO,Virtualizzazione,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+vm-controller2,OPERATIVO,Virtualizzazione,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+beacons1,CONFIGURATO,Virtualizzazione,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+beacons2,CONFIGURATO,Virtualizzazione,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pdpostws01a,OPERATIVO,FinAppOps,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pdpostws02a,OPERATIVO,FinAppOps,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pdpostdb01a,OPERATIVO,FinAppOps,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pdpostdb02a,OPERATIVO,FinAppOps,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+svilgateway,OPERATIVO,Network Security,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+certgateway,OPERATIVO,Network Security,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+bpol2k16-fs01,OPERATIVO,FinAppOps,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+bpol2k16-fs02,OPERATIVO,FinAppOps,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+datamigr,OPERATIVO,FinAppOps,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pcmboiiocs47v,OPERATIVO,AM_SPL_Logistica_Tracciatura_Recapito,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pcmboiidco01v,OPERATIVO,AM_SPL_Logistica_Tracciatura_Recapito,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+wec-cmpmc,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+wintestvsan2_r6,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+t1_vm,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+vm-qc,OPERATIVO,Virtualizzazione,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+vm-pcserver2,OPERATIVO,Virtualizzazione,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+vm-pcserver,OPERATIVO,Virtualizzazione,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+backuppalo-dd,OPERATIVO,Virtualizzazione,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+rmpv-wappxlay06,CONFIGURATO,PV_TechnicalSupport,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+rmcv-wunits31-clone,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pvsan-cla,OPERATIVO,Virtualizzazione,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pvm-posteit-sp1,OPERATIVO,WebOps,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pvsan-rep-pmin,OPERATIVO,Virtualizzazione,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pvsan-rep-db01,OPERATIVO,Virtualizzazione,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pvsan-rep-as01,OPERATIVO,Virtualizzazione,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pvm-mgtnet4,OPERATIVO,Network Security,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb23c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb19c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb27c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb45c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb15c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb09c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb42c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb05c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb22c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb20c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb02c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb53c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb03c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb07c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb14c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb36c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb43c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb26c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
+pboarb49c,CONFIGURATO,UNKNOWN,Windows 2016 (64-bit),01/01/2027 00:00,DMU
