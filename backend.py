@@ -14,7 +14,7 @@ from rank_bm25 import BM25Okapi
 
 # LangChain Imports
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_experimental.text_splitter import SemanticChunker
 from langchain_community.vectorstores import FAISS
 from langchain_community.document_loaders import Docx2txtLoader
 from langchain_core.messages import SystemMessage
@@ -38,6 +38,8 @@ def today_str() -> str:
 
 
 # --- 2. CARICAMENTO E PREPARAZIONE DOCUMENTI ---
+embeddings = OpenAIEmbeddings(model=EMBEDDING_MODEL)
+
 documenti = [
     {"path": CSV_PATH, "flag": "server_data", "type": "csv"},
     {"path": "KB/Data_Governance&Strategy-Domande_KB_v4.docx", "flag": "governance_strategy", "type": "docx"}
@@ -51,8 +53,8 @@ for doc in documenti:
         if doc["type"] == "docx":
             loader = Docx2txtLoader(doc["path"])
             text = loader.load()[0].page_content
-            text_splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=128)
-            chunks = text_splitter.split_text(text)
+            semantic_splitter = SemanticChunker(embeddings, breakpoint_threshold_type="percentile")
+            chunks = semantic_splitter.split_text(text)
         elif doc["type"] == "csv":
             df = pd.read_csv(doc["path"])
             for _, row in df.iterrows():
@@ -66,8 +68,6 @@ for doc in documenti:
             print(f"Documento '{doc['flag']}' caricato e suddiviso in {len(chunks)} chunks.")
     except Exception as e:
         print(f"Errore durante il caricamento di {doc['path']}: {e}")
-
-embeddings = OpenAIEmbeddings(model=EMBEDDING_MODEL)
 retrievers_faiss = {}
 bm25_models = {}
 for flag, chunks in document_chunks.items():
@@ -167,11 +167,11 @@ def retrieve_documents(state: State):
     bm25_model = bm25_models[selected_flag]
     tokenized_query = user_message.split()
     bm25_scores = bm25_model.get_scores(tokenized_query)
-    bm25_indices = np.argsort(bm25_scores)[::-1][:4]
+    bm25_indices = np.argsort(bm25_scores)[::-1][:3]
     bm25_docs = [Document(page_content=document_chunks[selected_flag][i]) for i in bm25_indices]
-    faiss_docs = retrievers_faiss[selected_flag].invoke(user_message, k=4)
+    faiss_docs = retrievers_faiss[selected_flag].invoke(user_message, k=3)
     unique_docs = list({doc.page_content: doc for doc in bm25_docs + faiss_docs}.values())
-    return {"retrieved_text": "\n\n".join([doc.page_content for doc in unique_docs[:8]])}
+    return {"retrieved_text": "\n\n".join([doc.page_content for doc in unique_docs[:3]])}
 
 
 def extract_date_window(query: str) -> tuple:
